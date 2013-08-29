@@ -10,7 +10,7 @@ module.exports = function (file, options) {
 
   var context = context_.getContext({
     // handlebars template to compile
-    template: fs.readFileSync(file, 'utf8'),
+    template: options.template || fs.readFileSync(file, 'utf8'),
 
     // compiled handlebars template
     templatejs: null
@@ -33,7 +33,7 @@ module.exports = function (file, options) {
     '"] = ' + template + ';'
 
   return namedTemplateJs;
-}
+};
 
 module.exports.context = context_;
 module.exports.render = require('./render');
